@@ -15,7 +15,6 @@ Tradutor de texto para Braille em Python, **baseado em regras e orientado a tabe
 - [Estrutura do projeto](#estrutura-do-projeto)
 - [Instalação e uso](#instalação-e-uso)
 - [Escopo](#escopo)
-- [Equipe e licença](#equipe-e-licença)
 
 ## Visão geral
 
