@@ -2,6 +2,7 @@ import ebooklib
 from ebooklib import epub
 from bs4 import BeautifulSoup
 
+# Criando função de extração
 def extrair_texto_epub(caminho_arquivo):
     # Abertura de epub
     livro = epub.read_epub(caminho_arquivo)
@@ -11,11 +12,13 @@ def extrair_texto_epub(caminho_arquivo):
     blocos_de_texto = []
 
     # Verifica cada documento capítulo/página arquivo
-    for item in livro.get_items_of_type(ebooklib.ITEM_DOCUMENT): # O 'ITEM_DOCUMENT' é um filtro para ele ignorar capas e imagens
-        conteudo_html = item.get_content()
+    for item in livro.get_items_of_type(ebooklib.ITEM_DOCUMENT): # O 'ITEM_DOCUMENT' é um filtro para ignorar capas e imagens
+        # Processa somente o conteúdo do item
+        conteudo_html = item.get_content() # Retorna o conteúdo do item como bytes
         
         # Usa o beautifulsoup para limpar código
         sopa = BeautifulSoup(conteudo_html, 'html.parser')
+        # A sopa é uma variavel que guarda o texto limpo
         
         # Procura de conteúdo
         for elemento in sopa.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']):
@@ -30,6 +33,7 @@ def extrair_texto_epub(caminho_arquivo):
                     
                 # Formato exigido pela arquitetura do projeto
                 blocos_de_texto.append({"tipo": tipo_bloco, "texto": texto})
+                # Adicionando conteúdo adquirido na lista
                 
     return blocos_de_texto
 
