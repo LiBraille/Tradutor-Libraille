@@ -1,0 +1,19 @@
+from pathlib import Path
+from .txt import ler_txt
+from .epub import ler_epub
+
+# Abaixo, a extensão (suffix/sufixo) do arquivo recebe uma função expecifica que é seu reader correspondente.
+sufixos = {".txt": ler_txt, ".epub": ler_epub}
+
+def seletor(*arquivos):
+    for arquivo in arquivos:
+        extensao = Path(arquivo).suffix.lower() # Pega a última extensão do arquivo, coloca para minusculo e retorna como uma string
+
+        try:
+            leitor = sufixos[extensao] # Sem parenteses a função não é executada
+        except KeyError:
+            raise ValueError(f"Formato não suportado: {extensao}") from None
+
+        leitor(arquivo)
+
+seletor("teste.epub")
