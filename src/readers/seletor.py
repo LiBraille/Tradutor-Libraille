@@ -5,15 +5,17 @@ from .epub import ler_epub
 # Abaixo, a extensão (suffix/sufixo) do arquivo recebe uma função expecifica que é seu reader correspondente.
 sufixos = {".txt": ler_txt, ".epub": ler_epub}
 
-def seletor(*arquivos):
-    for arquivo in arquivos:
-        extensao = Path(arquivo).suffix.lower() # Pega a última extensão do arquivo, coloca para minusculo e retorna como uma string
+def seletor(arquivo):
+    extensao = Path(arquivo).suffix.lower() # Pega a última extensão do arquivo, coloca para minusculo e retorna como uma string
 
-        try:
-            leitor = sufixos[extensao]
-        except KeyError:
-            raise ValueError(f"Formato não suportado: {extensao}") from None
+    try:
+        leitor = sufixos[extensao]
+    except KeyError:
+        raise ValueError(f"Formato não suportado: {extensao}") from None
 
-        leitor(arquivo)
+    blocos = leitor(arquivo)
 
-seletor("teste.epub")
+    return blocos
+
+if __name__ == "__main__":
+    seletor()
