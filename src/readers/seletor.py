@@ -10,7 +10,7 @@ def seletor(*arquivos):
         extensao = Path(arquivo).suffix.lower() # Pega a última extensão do arquivo, coloca para minusculo e retorna como uma string
 
         try:
-            leitor = sufixos[extensao] # Sem parenteses a função não é executada
+            leitor = sufixos[extensao]
         except KeyError:
             raise ValueError(f"Formato não suportado: {extensao}") from None
 
