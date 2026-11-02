@@ -7,22 +7,22 @@ def extrair_texto_epub(caminho_arquivo):
     livro = epub.read_epub(caminho_arquivo)
     print("Livro aberto com sucesso!")
     
-    # Lista os blocos normalizados para guardar o conteúdo
+    # Lista
     blocos_de_texto = []
 
-    # 2. Verifica cada documento capítulo/página arquivo
-    for item in livro.get_items_of_type(ebooklib.ITEM_DOCUMENT):
+    # Verifica cada documento capítulo/página arquivo
+    for item in livro.get_items_of_type(ebooklib.ITEM_DOCUMENT): # O 'ITEM_DOCUMENT' é um filtro para ele ignorar capas e imagens
         conteudo_html = item.get_content()
         
-        # 3. Usa o beautifulsoup para limpar código
+        # Usa o beautifulsoup para limpar código
         sopa = BeautifulSoup(conteudo_html, 'html.parser')
         
-        # 4. Procura de conteúdo
+        # Procura de conteúdo
         for elemento in sopa.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']):
             texto = elemento.get_text(strip=True)
             
-            if texto: # Se não estiver vazio
-                # Define se é título ou parágrafo baseado na tag HTML
+            if texto:
+                # Define se é título ou parágrafo baseado na tag html
                 if elemento.name.startswith('h'):
                     tipo_bloco = 'titulo'
                 else:
