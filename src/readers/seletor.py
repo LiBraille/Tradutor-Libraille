@@ -16,6 +16,3 @@ def seletor(arquivo):
     blocos = leitor(arquivo)
 
     return blocos
-
-if __name__ == "__main__":
-    seletor()
