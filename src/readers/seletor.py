@@ -1,9 +1,9 @@
 from pathlib import Path
 from .txt import ler_txt
-from .epub import ler_epub
+from .epub import extrair_epub
 
 # Abaixo, a extensão (suffix/sufixo) do arquivo recebe uma função expecifica que é seu reader correspondente.
-sufixos = {".txt": ler_txt, ".epub": ler_epub}
+sufixos = {".txt": ler_txt, ".epub": extrair_epub}
 
 def seletor(arquivo):
     extensao = Path(arquivo).suffix.lower() # Pega a última extensão do arquivo, coloca para minusculo e retorna como uma string
