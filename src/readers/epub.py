@@ -3,7 +3,7 @@ from ebooklib import epub
 from bs4 import BeautifulSoup  # Usa o beautifulsoup para limpar código
 
 # Criando função de extração
-def extrair_texto_epub(caminho_arquivo):
+def extrair_epub(caminho_arquivo):
     # Abertura de epub
     livro = epub.read_epub(caminho_arquivo)
     print("Livro aberto com sucesso!")
@@ -36,10 +36,10 @@ def extrair_texto_epub(caminho_arquivo):
                 
     return blocos_de_texto
 
-# Rodar envio
+# Rodar envio teste
 if __name__ == '__main__':
-    arquivo_teste = "ler_epub"
-    resultado = extrair_texto_epub(arquivo_teste)
+    arquivo_teste = "teste.epub"
+    resultado = extrair_epub(arquivo_teste)
     
     print(f"\nSucesso! Encontrei {len(resultado)} blocos de texto.")
     print("Primeiros 3 blocos extraídos:")
