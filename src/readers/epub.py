@@ -1,6 +1,6 @@
 import ebooklib
 from ebooklib import epub
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup  # Usa o beautifulsoup para limpar código
 
 # Criando função de extração
 def extrair_texto_epub(caminho_arquivo):
@@ -16,12 +16,11 @@ def extrair_texto_epub(caminho_arquivo):
         # Processa somente o conteúdo do item
         conteudo_html = item.get_content() # Retorna o conteúdo do item como bytes
         
-        # Usa o beautifulsoup para limpar código
-        sopa = BeautifulSoup(conteudo_html, 'html.parser')
-        # A sopa é uma variavel que guarda o texto limpo
+        texto_limpo = BeautifulSoup(conteudo_html, 'html.parser')
+        # A texto_limpo é uma variavel que guarda o texto limpo
         
         # Procura de conteúdo
-        for elemento in sopa.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']):
+        for elemento in texto_limpo.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']):
             texto = elemento.get_text(strip=True)
             
             if texto:
@@ -37,9 +36,9 @@ def extrair_texto_epub(caminho_arquivo):
                 
     return blocos_de_texto
 
-# Teste exemplo
+# Rodar envio
 if __name__ == '__main__':
-    arquivo_teste = "teste.epub"
+    arquivo_teste = "ler_epub"
     resultado = extrair_texto_epub(arquivo_teste)
     
     print(f"\nSucesso! Encontrei {len(resultado)} blocos de texto.")
