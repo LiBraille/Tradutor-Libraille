@@ -14,7 +14,7 @@ def pontos_para_numero(pontos):
         # Se letra for desconhecida, retorna 0
         return 0
 
-    # (Bitmasking)
+    # (Bitmasking) representa números binários para cada letra, responsavel pela representação em braille
     numero_braille = 0
     for ponto in pontos:
         valor = (ponto - 1) ** 2 
