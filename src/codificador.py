@@ -31,6 +31,6 @@ if __name__ == '__main__':
     print()
 
 # Rodar teste binário
-nome_ficheiro = "teste.bin"
-converter_para_binario(numeros_teste, nome_ficheiro)
-print(f'Arquivo binário gerado: {nome_ficheiro}')
+    nome_ficheiro = "teste.bin"
+    converter_para_binario(numeros_teste, nome_ficheiro)
+    print(f'Arquivo binário gerado: {nome_ficheiro}')
