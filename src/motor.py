@@ -32,7 +32,9 @@ def traduzir_palavra(palavra, tabela):
         # Padroniza letras para minusculas, facilitar leitura de json
 
         if letra in tabela['caracteres']:
+        # Se letra existe na tabela, converte em número braille
             pontos = tabela['caracteres'][letra]
+            # Obtém pontos em braille correspondentes à letra
             numero = pontos_para_numero(pontos)
             # Identifica se letra existe no dicionário json
             celulas_braille.append(numero)
