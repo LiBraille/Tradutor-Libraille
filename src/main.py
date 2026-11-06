@@ -29,4 +29,16 @@ def executar():
         numeros = traduzir_palavra(palavra, regras)
         numeros_totais.extend(numeros)
         numeros_totais.append(0)
-       
+
+        ver_resultado = converter_para_unicode(numeros_totais)
+
+        print(f'Resultado: {ver_resultado}')
+        print()
+
+        converter_para_binario(numeros_totais, caminho_saida)
+
+        print(f'Ficheiro {caminho_saida} criado com sucesso!')
+        print()
+        
+if __name__ == '__main__':
+    executar()
