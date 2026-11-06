@@ -11,7 +11,7 @@ def carregar_tabela(caminho_arquivo):
 
 def pontos_para_numero(pontos):
     if pontos == ['?']:
-        # Se letra for desconhida, retorna 0
+        # Se letra for desconhecida, retorna 0
         return 0
 
     # (Bitmasking)
@@ -20,6 +20,7 @@ def pontos_para_numero(pontos):
         valor = (ponto - 1) ** 2 
         # Converte ponto em número binário
         numero_braille += valor
+        # Adiciona valor do ponto ao número braille
 
     return numero_braille
 
@@ -34,27 +35,13 @@ def traduzir_palavra(palavra, tabela):
         if letra in tabela['caracteres']:
         # Se letra existe na tabela, converte em número braille
             pontos = tabela['caracteres'][letra]
-            # Obtém pontos em braille correspondentes à letra
+            # Obtém pontos em braille correspondentes da letra
             numero = pontos_para_numero(pontos)
             # Identifica se letra existe no dicionário json
             celulas_braille.append(numero)
             
-
         else:
             celulas_braille.append(0)
             # Caso não exista na tabela, recebe 0
 
     return celulas_braille
-
-# Rodar teste
-if __name__ == '__main__':
-    caminho_tabela = "tables/ptbr/tabela.json"
-    regras = carregar_tabela(caminho_tabela)
-    
-    print('Tabela carregada com sucesso!')
-
-    # Palavra teste
-    palavra_teste = "caça"
-    resultado = traduzir_palavra(palavra_teste, regras)
-    print(f'\nA tradução da palavra "{palavra_teste}" em pontos em Braile é:')
-    print(resultado)

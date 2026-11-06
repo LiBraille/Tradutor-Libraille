@@ -1,6 +1,6 @@
 import ebooklib
 from ebooklib import epub
-from bs4 import BeautifulSoup  # Usa o beautifulsoup para limpar código
+from bs4 import BeautifulSoup  # Usa o beautifulsoup para limpar código (html, xml e outros)
 
 # Criando função de extração
 def extrair_epub(caminho_arquivo):
@@ -8,13 +8,14 @@ def extrair_epub(caminho_arquivo):
     livro = epub.read_epub(caminho_arquivo)
     print("Livro aberto com sucesso!")
     
-    # Lista
+    # Lista para armazenar blocos de texto
     blocos_de_texto = []
 
     # Verifica cada documento capítulo/página arquivo
     for item in livro.get_items_of_type(ebooklib.ITEM_DOCUMENT): # O 'ITEM_DOCUMENT' é um filtro para ignorar capas e imagens
         # Processa somente o conteúdo do item
-        conteudo_html = item.get_content() # Retorna o conteúdo do item como bytes
+        conteudo_html = item.get_content() 
+        # Retorna o conteúdo do item como bytes
         
         texto_limpo = BeautifulSoup(conteudo_html, 'html.parser')
         # A texto_limpo é uma variavel que guarda o texto limpo
@@ -22,6 +23,7 @@ def extrair_epub(caminho_arquivo):
         # Procura de conteúdo
         for elemento in texto_limpo.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p']):
             texto = elemento.get_text(strip=True)
+            # (get_text() com strip=True é para remover espaços em branco e quebra de linha)
             
             if texto:
                 # Define se é título ou parágrafo baseado na tag html
@@ -35,13 +37,3 @@ def extrair_epub(caminho_arquivo):
                 # Adicionando conteúdo adquirido na lista
                 
     return blocos_de_texto
-
-# Rodar envio teste
-if __name__ == '__main__':
-    arquivo_teste = "teste.epub"
-    resultado = extrair_epub(arquivo_teste)
-    
-    print(f"\nSucesso! Encontrei {len(resultado)} blocos de texto.")
-    print("Primeiros 3 blocos extraídos:")
-    for bloco in resultado[:3]:
-        print(bloco)
