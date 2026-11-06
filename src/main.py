@@ -15,34 +15,36 @@ def executar():
     blocos = extrair_epub(caminho_livro)
     # Extrai todos os blocos de texto do livro
 
-    primeiro_bloco = blocos[0]
-    texto_original = primeiro_bloco["texto"]
-    # Pega o texto do primeiro bloco do livro
+    numeros_totais = []
+
+    # O for apenas calcula e guarda os números
+    for posicao, bloco in enumerate(blocos):
+        texto_original = bloco["texto"]
+    # Pega todo o texto do bloco atual
     # E normaliza o texto
 
-    print(f'Texto original: {texto_original}\n')
+        if not texto_original.strip():
+            continue
+            # Pula blocos sem texto
+
+
+    print(f'Processando bloco {posicao + 1}...')
 
     palavras_limpas = normalizar_texto(texto_original)
 
-    
-    print(f'Palavras limpas: {palavras_limpas}\n')
-
-    numeros_totais = []
-    
-    # Este 'for' apenas calcula e guarda os números
     for palavra in palavras_limpas:
         numeros = traduzir_palavra(palavra, regras)
         numeros_totais.extend(numeros)
         numeros_totais.append(0)
+        # Adiciona um espaço em branco entre as palavras
 
-    # RECUAMOS para a esquerda: Isto só acontece DEPOIS de o 'for' terminar todas as palavras
     ver_resultado = converter_para_unicode(numeros_totais)
+
     print(f'Resultado: {ver_resultado}\n')
 
     converter_para_binario(numeros_totais, caminho_saida)
-    print(f'Ficheiro {caminho_saida} criado com sucesso!\n')
+    print(f'Ficheiro {caminho_saida} criado com sucesso!\n')    
+    print()
 
-
-# RECUAMOS para a margem esquerda: Fora da função 'executar'
 if __name__ == '__main__':
     executar()
