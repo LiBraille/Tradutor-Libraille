@@ -1,14 +1,25 @@
 import re
+from charset_normalizer import from_bytes
 
 def ler_txt(caminho):
-    with open(caminho, encoding="UTF-8-sig") as arquivo:
-        texto =  arquivo.read()
+    with open(caminho, "rb") as arquivo:
+        conteudo = arquivo.read()
 
-    def separar_blocos():
-        blocos = re.findall(r'\S.*?(?=\s*\n\s*\n|\s*\Z)', texto, re.DOTALL)
+    resultado = from_bytes(conteudo).best()
 
-        for bloco in blocos:
-            ...
-        return blocos
-    
-    return separar_blocos()
+    if resultado is None:
+        raise ValueError("Não foi possivel identificar a condificação do arquivo.")
+
+    texto = str(resultado)
+
+    return separar_blocos(texto)
+
+def separar_blocos(texto):
+    blocos = []
+    lista_blocos = re.findall(r'\S.*?(?=\s*\n\s*\n|\s*\Z)', texto, re.DOTALL)
+
+    for item in lista_blocos:
+        dicionario = {"tipo": "paragrafo", "texto": item}
+        blocos.append(dicionario)
+
+    return blocos
