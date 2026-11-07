@@ -9,6 +9,7 @@ venv/
 
 # Arquivos de configuração
 .env
+tests/
 
 # Arquivos editor de código
 .vscode
