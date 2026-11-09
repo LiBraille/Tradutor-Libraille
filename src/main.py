@@ -58,23 +58,20 @@ def executar():
     # E mostrar somente o ultimo bloco do texto
     
 
-    print(f'Total de blocos processados: {len(blocos)}')
+    print(f'Total de blocos processados: {len(blocos)}\n')
     # Vai ler todos os blocos do livro e mostrar quantidade
-    print()
-    print(f'Texto Original (Último bloco): {ultimo_texto}')
-    print()
-    print(f'Tradução do último bloco em Braille: {resultado_ultimo_bloco}')
-    print()
-    print(f'Contagem total caracteres Braille do livro: {(len(ver_resultado))}')
+    print(f'Texto Original (Último bloco): {ultimo_texto}\n')
+    print(f'Tradução do último bloco em Braille: {resultado_ultimo_bloco}\n')
+    print(f'Contagem total caracteres Braille do livro: {(len(ver_resultado))}\n')
     # Vai ler todos os caracteres do livro e mostrar quantidade
-    print(f'Tradução completa do livro: {ver_resultado}')
+    print(f'Tradução completa do livro: {ver_resultado}\n')
     # Mostra a tradução completa do livro
-    print()
 
     converter_para_binario(numeros_totais, caminho_saida)
     print(f'Ficheiro {caminho_saida} criado com sucesso!\n')    
     # Apresenta nome de arquivo carregado
-    print()
 
 if __name__ == '__main__':
+    # Aqui o name e o main representa o nome do arquivo
+    # Se for o nome do arquivo, ele vai executar a função executar
     executar()
