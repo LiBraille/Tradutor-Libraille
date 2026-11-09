@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tradutor-libraille"
+version = "0.1.0"
+description = "Sistema de tradução Libraille"
+authors = [
+    { name = "Guilherme Miranda de Morais", email = "g.mm-main@proton.me" },
+    { name = "Victor Leonardo", email = "victorvarjao.18@gmail.com" }
+]
+license = "GPL-3.0-only"
+dependencies = [
+    "ebooklib",
+    "bs4" 
+]
+
+[project.scripts]
+libraille = "cli:main"
+
+[tool.setuptools.package-dir]
+"" = "src"
