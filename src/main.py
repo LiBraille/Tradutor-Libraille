@@ -1,8 +1,6 @@
 from normalizador import normalizar_texto
 from motor import carregar_tabela, traduzir_palavra
 from codificador import converter_para_unicode, converter_para_binario
-from readers.epub import extrair_epub
-from readers.txt import extrair_txt
 from readers.seletor import seletor
 # Importando todos os motores
 
