@@ -3,13 +3,14 @@ from motor import carregar_tabela, traduzir_palavra
 from codificador import converter_para_unicode, converter_para_binario
 from readers.epub import extrair_epub
 from readers.txt import extrair_txt
+from readers.seletor import seletor
 # Importando todos os motores
 
 def executar(caminho_livro, tabela, caminho_saida):
     print("Tradutor Libraille iniciado!")
 
     regras = carregar_tabela(tabela)
-    blocos = extrair_epub(caminho_livro)
+    blocos = seletor(caminho_livro)
     # Extrai todos os blocos de texto do livro e regras de tradução
 
     numeros_totais = []
@@ -20,7 +21,7 @@ def executar(caminho_livro, tabela, caminho_saida):
     # Lista para os números do último bloco
 
     # O for apenas calcula e guarda os números
-    for bloco in enumerate(blocos):
+    for posicao, bloco in enumerate(blocos):
         # Para cada posicao do livro, pega o texto do bloco atual
         texto_original = bloco["texto"]
         # Pega todo o texto do bloco atual
