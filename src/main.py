@@ -2,13 +2,14 @@ from normalizador import normalizar_texto
 from motor import carregar_tabela, traduzir_palavra
 from codificador import converter_para_unicode, converter_para_binario
 from readers.epub import extrair_epub
+from readers.txt import extrair_txt
 # Importando todos os motores
 
-def executar():
+def executar(caminho, tabela, nome_saida):
     print("Tradutor Libraille iniciado!")
-    caminho_livro = "teste.epub"
-    caminho_tabela = "tables/ptbr/tabela.json"
-    caminho_saida = "livro_traduzido.bin"
+    caminho_livro = caminho
+    caminho_tabela = tabela
+    caminho_saida = nome_saida
     # Pega configurações do livro de teste, tabela de tradução e saída
 
     regras = carregar_tabela(caminho_tabela)
