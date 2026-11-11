@@ -1,3 +1,5 @@
+from pathlib import Path
+
 def converter_para_unicode(lista_de_numeros):
     texto_braille = ''
     # Armazena o texto braille convertido
@@ -13,6 +15,9 @@ def converter_para_unicode(lista_de_numeros):
 
 # Motor binário
 def converter_para_binario(lista_numeros, caminho_saida):
+    # Adiciona ou altera o sufixo para .bin
+    caminho_saida = Path(caminho_saida).with_suffix(".bin")
+
     # Função para converter uma lista de números em um arquivo binário de saída
     bytes_braille = bytes(lista_numeros)
     # Converte a lista de números em bytes
