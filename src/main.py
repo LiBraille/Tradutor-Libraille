@@ -20,7 +20,7 @@ def executar(caminho_livro, tabela, caminho_saida):
     # Lista para os números do último bloco
 
     # O for apenas calcula e guarda os números
-    for posicao, bloco in enumerate(blocos):
+    for bloco in enumerate(blocos):
         # Para cada posicao do livro, pega o texto do bloco atual
         texto_original = bloco["texto"]
         # Pega todo o texto do bloco atual
