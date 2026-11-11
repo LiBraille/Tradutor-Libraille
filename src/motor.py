@@ -26,22 +26,38 @@ def pontos_para_numero(pontos):
 
 def traduzir_palavra(palavra, tabela):
     celulas_braille = []
-    # Lista para armazenar pontos em braile
+    anterior = ""
+
+    sinal_maiuscula = pontos_para_numero(tabela['regras']['maiuscula'])
+    sinal_numero = pontos_para_numero(tabela['regras']['numero'])
+    
+    # Palavra inteira em maiúscula
+    if palavra.isupper() and any(letra.isalpha() for letra in palavra):
+        celulas_braille.extend([sinal_maiuscula] * 2)
 
     for letra in palavra:
-        letra = letra.lower()
-        # Padroniza letras para minusculas, facilitar leitura de json
-
         if letra in tabela['caracteres']:
-        # Se letra existe na tabela, converte em número braille
-            pontos = tabela['caracteres'][letra]
-            # Obtém pontos em braille correspondentes da letra
-            numero = pontos_para_numero(pontos)
-            # Identifica se letra existe no dicionário json
-            celulas_braille.append(numero)
+
+            if letra.isupper() and palavra.isupper():
+                pontos = tabela['caracteres'][letra]
+
+            elif letra.isupper():
+                celulas_braille.append(sinal_maiuscula)
+                pontos = tabela['caracteres'][letra]
+
+            elif letra.isdigit() and not anterior.isdigit():
+                celulas_braille.append(sinal_numero)
+                pontos = tabela['caracteres'][letra]
+
+            else:
+                pontos = tabela['caracteres'][letra]
             
+            numero = pontos_para_numero(pontos)
+            celulas_braille.append(numero)
+            anterior = letra
+
         else:
             celulas_braille.append(0)
-            # Caso não exista na tabela, recebe 0
+            anterior = letra
 
     return celulas_braille
