@@ -29,14 +29,14 @@ Principais características:
 
 ## Funcionalidades
 
-- [ ] Leitura de arquivos `.txt`
-- [ ] Leitura de arquivos `.epub`
-- [ ] Normalização do texto (Unicode NFC, espaços, quebras e tokenização)
-- [ ] Carregamento e validação das tabelas JSON
-- [ ] Motor de tradução baseado em tabelas e regras (pt-BR)
-- [ ] Saída em arquivo binário (`.bin`, com cabeçalho)
-- [ ] Saída em Unicode Braille (visualização e depuração)
-- [ ] Interface de linha de comando (CLI)
+- [x] Leitura de arquivos `.txt`
+- [x] Leitura de arquivos `.epub`
+- [x] Normalização do texto (Unicode NFC, espaços, quebras e tokenização)
+- [x] Carregamento e validação das tabelas JSON
+- [x] Motor de tradução baseado em tabelas e regras (pt-BR)
+- [x] Saída em arquivo binário (`.bin`, com cabeçalho)
+- [x] Saída em Unicode Braille (visualização e depuração)
+- [x] Interface de linha de comando (CLI)
 - [ ] Suporte a outros idiomas por meio de novas tabelas
 
 ## Formatos
