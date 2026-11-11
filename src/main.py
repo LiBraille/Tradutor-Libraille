@@ -5,14 +5,10 @@ from readers.epub import extrair_epub
 from readers.txt import extrair_txt
 # Importando todos os motores
 
-def executar(caminho, tabela, nome_saida):
+def executar(caminho_livro, tabela, caminho_saida):
     print("Tradutor Libraille iniciado!")
-    caminho_livro = caminho
-    caminho_tabela = tabela
-    caminho_saida = nome_saida
-    # Pega configurações do livro de teste, tabela de tradução e saída
 
-    regras = carregar_tabela(caminho_tabela)
+    regras = carregar_tabela(tabela)
     blocos = extrair_epub(caminho_livro)
     # Extrai todos os blocos de texto do livro e regras de tradução
 
