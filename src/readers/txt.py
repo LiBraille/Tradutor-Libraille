@@ -1,6 +1,6 @@
 import re
 
-def ler_txt(caminho):
+def extrair_txt(caminho):
     with open(caminho, encoding="utf-8-sig") as arquivo:
         texto = arquivo.read()
 
