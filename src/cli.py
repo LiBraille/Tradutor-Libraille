@@ -1,6 +1,5 @@
 import argparse
 from pathlib import Path
-from readers.seletor import seletor
 from main import executar
 
 
