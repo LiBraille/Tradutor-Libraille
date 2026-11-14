@@ -14,3 +14,7 @@ tests/
 
 # Arquivos editor de código
 .vscode
+
+# Arquivos gerados pelo projeto
+*.log
+*.bin
