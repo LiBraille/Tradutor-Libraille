@@ -125,7 +125,7 @@ Exemplo ilustrativo (o formato pode mudar durante o desenvolvimento):
 ```
 .
 ├── tables/
-│   └── ptbr/          # tabelas JSON do português do Brasil
+│   └── ptbr.json      # tabela JSON do português do Brasil
 ├── src/               # leitores, normalização, motor de tradução e encoders
 ├── tests/
 ├── requirements.txt
