@@ -43,3 +43,6 @@ py-modules = ["cli", "main", "motor", "normalizador", "codificador"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+libraille_data = ["tables/*.json"]
