@@ -1,19 +1,13 @@
 import json 
 # biblioteca que permite ler arquivos json e converter em string
 from pathlib import Path
+from importlib.resources import files
 
 def carregar_tabela(tabela_nome):
-    tabelas = Path(__file__).resolve().parent.parent / 'tables'
-    caminho = Path(tabela_nome)
-
-    if not caminho.is_absolute():
-        opcoes = [tabelas / caminho]
-        if caminho.suffix == '':
-            opcoes.extend((tabelas / f'{caminho}.json', tabelas / caminho / 'tabela.json'))
-        caminho = next((opcao for opcao in opcoes if opcao.is_file()), opcoes[0])
-
+    caminho = files("libraille_data").joinpath("tables", f"{tabela_nome}.json")
+    
     with open(caminho, 'r', encoding='utf-8') as ficheiro:
-    # with open abre o ficheiro e garante fechamento
+    # with open abre o ficheiro e g2arante fechamento
     # encoding='utf-8' para ler caracteres (como acentuação)
         tabela = json.load(ficheiro)
 
