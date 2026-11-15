@@ -4,7 +4,7 @@ from pathlib import Path
 from importlib.resources import files
 
 def carregar_tabela(tabela_nome):
-    caminho = files("libraille_data").joinpath("tables", f"{tabela_nome}.json")
+    caminho = files("libraille_data").joinpath("tables", f"{tabela_nome}.json") # Busca a tabela fornecida na pasta de tabelas
     
     with open(caminho, 'r', encoding='utf-8') as ficheiro:
     # with open abre o ficheiro e g2arante fechamento
