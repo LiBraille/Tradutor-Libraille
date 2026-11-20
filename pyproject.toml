@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tradutor-libraille"
+version = "0.1.0"
+description = "Sistema de tradução LiBraille"
+readme = "README.md"
+requires-python = ">=3.10"
+
+authors = [
+    { name = "Guilherme Miranda de Morais", email = "g.mm-main@proton.me" },
+    { name = "Victor Leonardo", email = "victorvarjao.18@gmail.com" }
+]
+
+license = "GPL-3.0-only"
+
+keywords = [
+    "braille",
+    "accessibility",
+    "translator"
+]
+
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent"
+]
+
+dependencies = [
+    "ebooklib",
+    "beautifulsoup4",
+    "charset-normalizer"
+]
+
+[project.scripts]
+libraille = "tradutor_libraille.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+tradutor_libraille = ["tables/*.json"]
