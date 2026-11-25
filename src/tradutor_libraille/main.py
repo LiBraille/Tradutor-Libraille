@@ -46,7 +46,7 @@ def traduzir_arquivo(caminho_livro, tabela="ptbr"):
     }
 
 
-def executar(caminho_livro, tabela, caminho_saida):
+def executar(caminho_livro, tabela, caminho_saida="libraille_livro"):
     print("Tradutor Libraille iniciado!")
 
     resultado = traduzir_arquivo(caminho_livro=caminho_livro, tabela=tabela)
