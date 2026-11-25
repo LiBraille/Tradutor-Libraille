@@ -11,7 +11,7 @@ def main():
 
     parser.add_argument("-a", "--arquivo", help="Caminho do arquivo que será processado", type=Path, required=True)
     parser.add_argument("-t", "--tabela", help="Define a tabela que será usada", type=str, default="ptbr")
-    parser.add_argument("-s", "--saida", help="Define o nome do arquivo de saida", type=str, required=True)
+    parser.add_argument("-s", "--saida", help="Define o nome do arquivo de saida", type=str, required=False, default="libraille_livro")
 
     args = parser.parse_args()
 
